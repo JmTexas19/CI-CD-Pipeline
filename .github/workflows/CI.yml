@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${GITHUB_SHA} .
+      run: docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${{ github.sha }} .
 
     - name: Create credentials for Docker and Terraform
       uses: google-github-actions/auth@v2
@@ -43,7 +43,7 @@ jobs:
     - name: Push Docker image to Artifact Registry
       run: |
         gcloud auth configure-docker --quiet
-        docker push gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${GITHUB_SHA}
+        docker push gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${{ github.sha }}
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
@@ -59,9 +59,9 @@ jobs:
         terraform apply -auto-approve
       env:
         TF_VAR_gcp_project: ${{ secrets.GCP_PROJECT }}
-        TF_VAR_docker_image: gcr.io/${{ secrets.GCP_PROJECT }}/my-app:${GITHUB_SHA}
+        TF_VAR_docker_image: gcr.io/${{ secrets.GCP_PROJECT }}/my-app:${{ github.sha }}
 
 env:
     GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
     GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-    TF_VAR_docker_image: gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${GITHUB_SHA}
+    TF_VAR_docker_image: gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${{ github.sha }}
