@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Run Linter
-      run: npx eslint .
+      run: yarn eslint .
 
   build:
     needs: lint
