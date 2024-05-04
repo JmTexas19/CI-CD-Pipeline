@@ -52,6 +52,7 @@ jobs:
       run: |
         cd terraform
         terraform init
+        terraform import google_cloud_run_service.default us-central1/simple-app-webservice
 
     - name: Terraform Apply
       run: |
