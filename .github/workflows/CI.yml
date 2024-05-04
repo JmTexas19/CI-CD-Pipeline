@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4.0.2
       with:
         node-version: '20'
     - name: Install dependencies
@@ -46,7 +46,7 @@ jobs:
         docker push gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${{ github.sha }}
 
     - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v1
+      uses: hashicorp/setup-terraform@v3.1.0
 
     - name: Terraform Initialize
       run: |
