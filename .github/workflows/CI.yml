@@ -59,7 +59,7 @@ jobs:
         terraform apply -auto-approve
       env:
         TF_VAR_gcp_project: ${{ secrets.GCP_PROJECT }}
-        TF_VAR_docker_image: gcr.io/${{ secrets.GCP_PROJECT }}/my-app:${{ github.sha }}
+        TF_VAR_docker_image: gcr.io/${{ secrets.GCP_PROJECT }}/simple-web-app:${{ github.sha }}
 
 env:
     GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
