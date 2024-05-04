@@ -52,11 +52,11 @@ jobs:
       run: |
         cd terraform
         terraform init
-        terraform import google_cloud_run_service.default us-central1/simple-app-webservice
-
+        
     - name: Terraform Apply
       run: |
         cd terraform
+        terraform import google_cloud_run_service.default us-central1/simple-app-webservice
         terraform apply -auto-approve
       env:
         TF_VAR_gcp_project: ${{ secrets.GCP_PROJECT }}
