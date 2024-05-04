@@ -1,11 +1,12 @@
 provider "google" {
+  credentials = file(var.gcp_credentials_file)
   project     = "simple-web-app-422301 "
   region      = "us-central1"
 }
 
 resource "google_cloud_run_service" "default" {
-  name     = "example-service"
-  location = var.gcp_region
+  name     = "simple-web-app-service"
+  location = "us-central1"
 
   template {
     spec {
