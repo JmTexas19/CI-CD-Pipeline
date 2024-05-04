@@ -56,7 +56,7 @@ jobs:
     - name: Terraform Import and Apply
       run: |
         cd terraform
-        terraform import google_cloud_run_service.default us-central1/simple-web-app-service
+        terraform import google_cloud_run_service.default us-central1/simple-web-app-service || true
         terraform apply -auto-approve
       env:
         TF_VAR_gcp_project: ${{ secrets.GCP_PROJECT }}
