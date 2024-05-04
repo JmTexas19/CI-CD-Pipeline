@@ -3,11 +3,6 @@ variable "docker_image" {
   type        = string
 }
 
-variable "gcp_credentials_file" {
-  description = "Path to the GCP credentials JSON file"
-  type        = string
-}
-
 variable "gcp_project" {
   description = "The GCP project ID"
   type        = string
