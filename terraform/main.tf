@@ -27,7 +27,7 @@ resource "google_cloud_run_service_iam_member" "invoker" {
   service  = google_cloud_run_service.default.name
   location = google_cloud_run_service.default.location
   role     = "roles/run.invoker"
-  member   = "allUsers" # This special identifier represents anyone on the internet.
+  member   = "allUsers"
 }
 
 output "service_url" {
