@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI/CD
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  CI:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
       run: npx eslint .
 
   build-and-deploy:
-    needs: CI
+    needs: lint
     runs-on: ubuntu-latest
     
     steps:
