@@ -1,11 +1,11 @@
 provider "google" {
   project     = var.gcp_project
-  region      = "us-central1"
+  region      = var.gcp_region
 }
 
 resource "google_cloud_run_service" "default" {
   name     = "simple-web-app-service"
-  location = "us-central1"
+  location = var.gcp_region
 
   template {
     spec {
